@@ -33,15 +33,15 @@ This plugin used to be called `commit-message`. If you installed it under that n
 /plugin install git-helper@git-helper-marketplace
 ```
 
-The command is now `/git-helper:suggest-message`. Your `.claude/commit-message.md` rules files keep working as before.
+The command is now `/git-helper:suggest-commit-message`. Your `.claude/commit-message.md` rules files keep working as before.
 
 ## Commands
 
 | Command | What it reads |
 |---|---|
-| `/git-helper:suggest-message` | Staged changes (the default) |
-| `/git-helper:suggest-message staged` | Staged changes |
-| `/git-helper:suggest-message unstaged` | Unstaged changes |
+| `/git-helper:suggest-commit-message` | Staged changes (the default) |
+| `/git-helper:suggest-commit-message staged` | Staged changes |
+| `/git-helper:suggest-commit-message unstaged` | Unstaged changes |
 
 You can also just ask "suggest a commit message". Claude may use the skill without the slash command.
 
@@ -110,7 +110,7 @@ Other things you can set: a scope (`feat(auth): ...`), a different max length, o
 
 | File | Purpose |
 |---|---|
-| `skills/suggest-message/SKILL.md` | The instructions Claude follows. Edit this to change the rules. |
+| `skills/suggest-commit-message/SKILL.md` | The instructions Claude follows. Edit this to change the rules. |
 | `.claude-plugin/plugin.json` | The plugin name, version and description. |
 | `.claude-plugin/marketplace.json` | Lists the plugin, so this repo works as a marketplace. |
 | `README.md` | This doc, for people. Claude does not load it. |
@@ -118,7 +118,7 @@ Other things you can set: a scope (`feat(auth): ...`), a different max length, o
 
 ## Release a new version
 
-1. Change `skills/suggest-message/SKILL.md`.
+1. Change `skills/suggest-commit-message/SKILL.md`.
 2. Raise `version` in `.claude-plugin/plugin.json` and in `.claude-plugin/marketplace.json`. Keep both the same.
 3. Commit and push. Developers get the change when they run `/plugin marketplace update git-helper-marketplace`.
 
