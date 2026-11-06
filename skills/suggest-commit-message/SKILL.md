@@ -3,8 +3,8 @@ name: suggest-commit-message
 description: Suggest a commit message for staged or unstaged git changes. Use when the user asks for a commit message.
 argument-hint: "[staged|unstaged]"
 allowed-tools: Bash(git diff:*), Bash(git status:*), Bash(git branch:*), Bash(git log:*), Bash(git rev-parse:*), Read
-model: sonnet
-effort: medium
+model: haiku
+effort: low
 ---
 
 Suggest a commit message. Do not commit and do not change any files.

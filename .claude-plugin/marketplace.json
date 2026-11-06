@@ -9,7 +9,7 @@
       "name": "git-helper",
       "source": "./",
       "description": "Git helpers for Claude Code. Suggests a commit message for staged or unstaged git changes, in the format <TICKET> <type>: <subject>, and a pull request title and description for a branch.",
-      "version": "2.1.0"
+      "version": "2.1.1"
     }
   ]
 }
