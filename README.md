@@ -1,7 +1,8 @@
 # git-helper plugin
 
-A Claude Code plugin with git helpers. It suggests a commit message for your git changes.
-It only suggests. It never commits and never changes files.
+A Claude Code plugin with git helpers. It suggests a commit message for your git changes,
+and a pull request title and description for your branch.
+It only suggests. It never commits, never pushes, never opens a PR and never changes files.
 
 ## Install
 
@@ -44,6 +45,33 @@ The command is now `/git-helper:suggest-commit-message`. Your `.claude/commit-me
 | `/git-helper:suggest-commit-message unstaged` | Unstaged changes |
 
 You can also just ask "suggest a commit message". Claude may use the skill without the slash command.
+
+### Pull requests
+
+`/git-helper:suggest-pr [title|description|both] [source-branch] [destination-branch]`
+
+| Command | What it suggests |
+|---|---|
+| `/git-helper:suggest-pr` | Title and description, current branch → main branch |
+| `/git-helper:suggest-pr title` | Title only |
+| `/git-helper:suggest-pr description` | Description only |
+| `/git-helper:suggest-pr both feature/login` | Both, for `feature/login` → main branch |
+| `/git-helper:suggest-pr title feature/login develop` | Title, for `feature/login` → `develop` |
+
+- The source branch defaults to the current branch.
+- The destination branch defaults to the repo's main branch (from `origin/HEAD`, else `main`, else `master`).
+- Arguments go by position. To set a branch but keep the default output, pass `both` first.
+- It reads the commits and the diff between the two branches. Changes you have not committed are not part of the PR, and it tells you if there are any.
+
+You can also just ask "suggest a PR description".
+
+**PR title** uses the same format and rules as a commit message (below), including your `.claude/commit-message.md` file. The ticket key comes from the source branch name.
+
+**PR description** follows, in this order:
+
+1. Your repo's PR template, if there is one (`.github/pull_request_template.md` and the other usual places). The skill fills in its sections.
+2. A rules file in your repo: `.claude/pull-request.md`.
+3. The default: **Summary**, **Changes** and **How to test**, plus **Notes** only for breaking changes, migrations or new config.
 
 ## Message format
 
@@ -110,7 +138,8 @@ Other things you can set: a scope (`feat(auth): ...`), a different max length, o
 
 | File | Purpose |
 |---|---|
-| `skills/suggest-commit-message/SKILL.md` | The instructions Claude follows. Edit this to change the rules. |
+| `skills/suggest-commit-message/SKILL.md` | The commit message instructions Claude follows. Edit this to change the rules. |
+| `skills/suggest-pr/SKILL.md` | The PR title and description instructions Claude follows. |
 | `.claude-plugin/plugin.json` | The plugin name, version and description. |
 | `.claude-plugin/marketplace.json` | Lists the plugin, so this repo works as a marketplace. |
 | `README.md` | This doc, for people. Claude does not load it. |
@@ -118,7 +147,7 @@ Other things you can set: a scope (`feat(auth): ...`), a different max length, o
 
 ## Release a new version
 
-1. Change `skills/suggest-commit-message/SKILL.md`.
+1. Change the `SKILL.md` files under `skills/`.
 2. Raise `version` in `.claude-plugin/plugin.json` and in `.claude-plugin/marketplace.json`. Keep both the same.
 3. Commit and push. Developers get the change when they run `/plugin marketplace update git-helper-marketplace`.
 

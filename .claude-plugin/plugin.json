@@ -1,10 +1,10 @@
 {
   "name": "git-helper",
-  "version": "2.0.0",
-  "description": "Git helpers for Claude Code. Suggests a commit message for staged or unstaged git changes, in the format <TICKET> <type>: <subject>.",
+  "version": "2.1.0",
+  "description": "Git helpers for Claude Code. Suggests a commit message for staged or unstaged git changes, in the format <TICKET> <type>: <subject>, and a pull request title and description for a branch.",
   "author": {
     "name": "Arash Manteghi"
   },
   "license": "MIT",
-  "keywords": ["git", "commit", "commit-message", "conventional-commits"]
+  "keywords": ["git", "commit", "commit-message", "conventional-commits", "pull-request"]
 }
