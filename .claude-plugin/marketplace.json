@@ -1,6 +1,6 @@
 {
   "name": "git-helper-marketplace",
-  "description": "Claude Code plugin with git helpers, such as commit message suggestions in the team format.",
+  "description": "Claude Code plugin with git helpers, such as commit message and pull request suggestions in the team format.",
   "owner": {
     "name": "Arash Manteghi"
   },
@@ -8,8 +8,8 @@
     {
       "name": "git-helper",
       "source": "./",
-      "description": "Git helpers for Claude Code. Suggests a commit message for staged or unstaged git changes, in the format <TICKET> <type>: <subject>.",
-      "version": "2.0.0"
+      "description": "Git helpers for Claude Code. Suggests a commit message for staged or unstaged git changes, in the format <TICKET> <type>: <subject>, and a pull request title and description for a branch.",
+      "version": "2.1.0"
     }
   ]
 }
