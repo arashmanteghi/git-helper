@@ -1,7 +1,7 @@
 {
-  "name": "commit-message",
-  "version": "1.2.0",
-  "description": "Suggest a commit message for staged or unstaged git changes, in the format <TICKET> <type>: <subject>.",
+  "name": "git-helper",
+  "version": "2.0.0",
+  "description": "Git helpers for Claude Code. Suggests a commit message for staged or unstaged git changes, in the format <TICKET> <type>: <subject>.",
   "author": {
     "name": "Arash Manteghi"
   },

@@ -1,6 +1,6 @@
-# commit-message plugin
+# git-helper plugin
 
-A Claude Code plugin. It suggests a commit message for your git changes.
+A Claude Code plugin with git helpers. It suggests a commit message for your git changes.
 It only suggests. It never commits and never changes files.
 
 ## Install
@@ -8,27 +8,40 @@ It only suggests. It never commits and never changes files.
 In Claude Code, run:
 
 ```
-/plugin install commit-message --marketplace arashmanteghi/commit-message
+/plugin install git-helper --marketplace arashmanteghi/git-helper
 ```
 
 On Claude Code versions older than 2.1.275, add the marketplace first, then install:
 
 ```
-/plugin marketplace add arashmanteghi/commit-message
-/plugin install commit-message@commit-message-marketplace
+/plugin marketplace add arashmanteghi/git-helper
+/plugin install git-helper@git-helper-marketplace
 ```
 
 The plugin works in all your projects once it is installed.
 
-To get a newer version, run `/plugin marketplace update commit-message-marketplace`.
+To get a newer version, run `/plugin marketplace update git-helper-marketplace`.
+
+## Migrating from commit-message
+
+This plugin used to be called `commit-message`. If you installed it under that name, remove the old one and install the new one:
+
+```
+/plugin uninstall commit-message@commit-message-marketplace
+/plugin marketplace remove commit-message-marketplace
+/plugin marketplace add arashmanteghi/git-helper
+/plugin install git-helper@git-helper-marketplace
+```
+
+The command is now `/git-helper:suggest-message`. Your `.claude/commit-message.md` rules files keep working as before.
 
 ## Commands
 
 | Command | What it reads |
 |---|---|
-| `/commit-message:suggest-message` | Staged changes (the default) |
-| `/commit-message:suggest-message staged` | Staged changes |
-| `/commit-message:suggest-message unstaged` | Unstaged changes |
+| `/git-helper:suggest-message` | Staged changes (the default) |
+| `/git-helper:suggest-message staged` | Staged changes |
+| `/git-helper:suggest-message unstaged` | Unstaged changes |
 
 You can also just ask "suggest a commit message". Claude may use the skill without the slash command.
 
@@ -107,7 +120,7 @@ Other things you can set: a scope (`feat(auth): ...`), a different max length, o
 
 1. Change `skills/suggest-message/SKILL.md`.
 2. Raise `version` in `.claude-plugin/plugin.json` and in `.claude-plugin/marketplace.json`. Keep both the same.
-3. Commit and push. Developers get the change when they run `/plugin marketplace update commit-message-marketplace`.
+3. Commit and push. Developers get the change when they run `/plugin marketplace update git-helper-marketplace`.
 
 If you push without raising the version, developers who already installed the plugin do not get the change.
 
